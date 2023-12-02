@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Navigation from "./components/navigation/navigation.component";
+import Home from "./components/Home/home.component";
+import LoginForm from "./components/LoginForm/loginForm.component";
+import SignUpForm from "./components/SignupForm/signupForm.component";
+import { UserContext } from "./context/user.context";
+import { useContext } from "react";
+import DNAToAA from "./components/dna-to-aa/dnaToAA.component";
+import NotAuthorized from "./components/NotAuthorized/NotAuthorized.component";
+import NotFound from "./components/NotFound/NotFound.component";
+import AAStructPred from "./components/aa-structure-prediction/aaStructurePrediction";
+import StructDisplay from "./components/struct-display/struct-display.component";
 
 function App() {
+  const { currentUser } = useContext(UserContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+        {/* <Route path="login" element={<LoginForm />} />
+        <Route path="signup" element={<SignUpForm />} />
+        {currentUser ? (
+          <>
+            <Route path="dna-to-aa" element={<DNAToAA />} />
+            <Route path="aa-struct-pred" element={<AAStructPred />} />
+            <Route
+              path="aa-struct"
+              element={<StructDisplay />}
+            />
+          </>
+        ) : (
+          <>
+            <Route path="dna-to-aa" element={<NotAuthorized />} />
+            <Route path="aa-struct-pred" element={<NotAuthorized />} />
+            <Route path="aa-struct" element={<NotAuthorized />} />
+          </>
+        )} */}
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
