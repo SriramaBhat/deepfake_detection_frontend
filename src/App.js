@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/navigation/navigation";
 import Home from "./components/Home/home.component";
+import Login from "./components/Login/Login";
+import SignUp from "./components/signup/signup";
 // import { UserContext } from "./context/user.context";
 // import { useContext } from "react";
 
@@ -29,6 +31,8 @@ function App() {
             <Route path="aa-struct" element={<NotAuthorized />} />
           </>
         )} */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Route>
     </Routes>
   );
