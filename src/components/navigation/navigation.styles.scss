@@ -2,7 +2,6 @@
   font-family: "Lato", sans-serif;
   width: 100%;
   height: 5rem;
-  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   margin: 0;
@@ -11,7 +10,7 @@
 
   .logo {
     height: 5rem;
-    width: 20rem;
+    width: 25rem;
   }
 
   .nav-links-container {
@@ -22,7 +21,7 @@
     justify-content: flex-end;
 
     .nav-link {
-      margin-right: 2rem;
+      margin: 1rem;
       cursor: pointer;
       text-decoration: none;
     }
@@ -75,8 +74,7 @@
       background-repeat: repeat no-repeat;
       background-size: 4px 3px;
       border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
-      border-style: solid;
-      border-width: 2px;
+      border: solid #000000 2px;
       box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
       box-sizing: border-box;
       color: #fff;
@@ -96,6 +94,7 @@
       user-select: none;
       -webkit-user-select: none;
       touch-action: manipulation;
+      margin-right: 2rem;
     }
 
     .sign_up:hover {

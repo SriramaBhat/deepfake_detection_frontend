@@ -1,0 +1,96 @@
+.home {
+  height: 300vh;
+  
+  .analyzer-container {
+    background-image: linear-gradient(to bottom left, rgba(47,20,106,255), rgba(47,193,201,255));
+    display: flex;
+    justify-content: space-around;
+    height: 150vh;
+
+    .about-container {
+      // padding:;
+      margin: 10rem 6rem 10rem 2rem;
+      color: aliceblue;
+    }
+
+    .analyzer {
+      height: 70vh;
+      width: 60rem;
+      background-color: white;
+      margin: 4rem 8rem 6rem 4rem;
+      position: sticky;
+
+      .view {
+        height: 70%;
+        margin: 1rem;
+        border: dashed rgb(198, 193, 193) 3px;
+      }
+
+      .result-container {
+        margin: 1rem;
+        display: flex;
+        justify-content: space-between;
+
+        .result {
+          margin: 0 2px;
+          p {
+            margin: 0;
+            position: relative;
+            top: -10px;
+          }
+        }
+
+        .standard_button {
+          align-items: center;
+          background-color: #fff;
+          border: 2px solid #000;
+          box-sizing: border-box;
+          color: #000;
+          cursor: pointer;
+          display: inline-flex;
+          fill: #000;
+          font-family: Inter,sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          height: 48px;
+          justify-content: center;
+          letter-spacing: -.8px;
+          line-height: 24px;
+          min-width: 5rem;
+          outline: 0;
+          padding: 0 5px;
+          text-align: center;
+          text-decoration: none;
+          transition: all .3s;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          border-radius: 4px;
+        }
+        
+        .standard_button:focus {
+          color: #171e29;
+        }
+        
+        .standard_button:hover {
+          border-color: darkgreen;
+          color: darkgreen;
+          background-color: rgb(182, 218, 230);
+          fill: darkgreen;
+        }
+        
+        .standard_button:active {
+          border-color: #06f;
+          color: #06f;
+          fill: #06f;
+        }
+        
+        @media (min-width: 768px) {
+          .standard_button {
+            min-width: 170px;
+          }
+        }
+      }
+    }
+  }
+}
