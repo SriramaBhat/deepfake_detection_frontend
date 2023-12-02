@@ -1,3 +1,8 @@
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .home {
   height: 300vh;
   
@@ -8,7 +13,7 @@
     height: 150vh;
 
     .about-container {
-      // padding:;
+      animation: fadeIn 5s;
       margin: 10rem 6rem 10rem 2rem;
       color: aliceblue;
     }
