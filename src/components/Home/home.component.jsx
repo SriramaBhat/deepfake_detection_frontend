@@ -1,6 +1,8 @@
+import { useInView } from "react-intersection-observer";
 import "./home.styles.scss";
 
 const Home = () => {
+  const [about_us, inView] = useInView({ rootMargin: "0px 0px" });
   return (
     <div class="home">
       <section className="analyzer-container">
@@ -25,7 +27,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="about-us"></section>
+      <section ref={about_us} className="about-us"></section>
       <section className="methadology"></section>
     </div>
   );
