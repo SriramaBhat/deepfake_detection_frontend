@@ -2,10 +2,9 @@ import React, { Fragment, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 import { UserContext } from "../../context/user.context";
-import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { signOutUser } from "../../utils/firebase.utils";
 
 import "./navigation.styles.scss";
-import proteinLogo from "../../assets/images/protein-logo1.png";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -14,7 +13,6 @@ const Navigation = () => {
     <Fragment>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <img src={proteinLogo} alt="Protein Logo" id="protein-logo" />
           <p>Protein Structure Predictor</p>
         </Link>
         <div className="nav-links-container">
