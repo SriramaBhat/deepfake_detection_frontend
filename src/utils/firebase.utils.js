@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import { firebaseConfig } from "../config/firebase.config";
+import firebaseConfig from "../config/firebase.config";
 
 initializeApp(firebaseConfig);
 
