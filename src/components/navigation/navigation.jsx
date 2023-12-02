@@ -5,6 +5,7 @@ import { UserContext } from "../../context/user.context";
 import { signOutUser } from "../../utils/firebase.utils";
 
 import "./navigation.styles.scss";
+import veritasiumLogo from "../../assets/logo.png";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -13,11 +14,13 @@ const Navigation = () => {
     <Fragment>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <p>Protein Structure Predictor</p>
+          <img src={veritasiumLogo} className="logo" alt="Veritasium-Logo" />
         </Link>
         <div className="nav-links-container">
           {currentUser ? (
             <div>
+              <Link className="nav-link log_in">About us</Link>
+              <Link className="nav-link log_in">Our Methadology</Link>
               <Link className="nav-link" to="/dna-to-aa">
                 DNA to Amino Acid
               </Link>
@@ -31,11 +34,13 @@ const Navigation = () => {
           ) : (
             <div>
               {" "}
-              <Link className="nav-link" to="/signup">
-                Signup
+              <Link className="nav-link log_in">About us</Link>
+              <Link className="nav-link log_in">Our Methadology</Link>
+              <Link className="nav-link log_in" to="/login">
+                Log In
               </Link>
-              <Link className="nav-link" to="/login">
-                Login
+              <Link className="nav-link sign_up" to="/signup">
+                Signup
               </Link>
             </div>
           )}

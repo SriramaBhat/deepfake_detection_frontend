@@ -1,33 +1,17 @@
 .navigation {
+  font-family: "Lato", sans-serif;
   width: 100%;
   height: 5rem;
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   margin: 0;
-  background-color: rgb(94, 178, 230);
+  background-color: #ffffff;
   position: static;
 
-  .logo-container {
-    height: 100%;
-    width: 25rem;
-    padding-left: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    font-weight: bold;
-    align-items: center;
-
-    #protein-logo {
-      margin: 0;
-      width: 85px;
-      height: 70px;
-      object-fit: cover;
-      display: block;
-    }
-
-    p {
-      margin: 0;
-    }
+  .logo {
+    height: 5rem;
+    width: 20rem;
   }
 
   .nav-links-container {
@@ -38,13 +22,89 @@
     justify-content: flex-end;
 
     .nav-link {
-      padding: 0.6rem 1rem;
+      margin-right: 2rem;
       cursor: pointer;
+      text-decoration: none;
     }
 
-    .nav-link:hover {
-      background-color: rgb(68, 147, 197);
-      border-radius: 4px;
+    .log_in {
+      align-self: center;
+      background-color: #fff;
+      background-image: none;
+      background-position: 0 90%;
+      background-repeat: repeat no-repeat;
+      background-size: 4px 3px;
+      // box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
+      box-sizing: border-box;
+      color: #41403e;
+      cursor: pointer;
+      display: inline-block;
+      font-family: Neucha, sans-serif;
+      font-size: 1rem;
+      line-height: 23px;
+      outline: none;
+      padding: 0.65rem;
+      text-decoration: none;
+      transition: all 235ms ease-in-out;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .log_in:hover {
+      border-bottom-left-radius: 15px 255px;
+      border-bottom-right-radius: 225px 15px;
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px;
+      border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+      border-style: solid;
+      border-width: 2px;
+      box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+      transform: translate3d(0, 2px, 0);
+    }
+
+    .log_in:focus {
+      box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
+    }
+
+    .sign_up {
+      align-self: center;
+      background-color: #000;
+      background-image: none;
+      background-position: 0 90%;
+      background-repeat: repeat no-repeat;
+      background-size: 4px 3px;
+      border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+      border-style: solid;
+      border-width: 2px;
+      box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: Neucha, sans-serif;
+      font-size: 1rem;
+      line-height: 23px;
+      outline: none;
+      padding: 0.75rem;
+      text-decoration: none;
+      transition: all 235ms ease-in-out;
+      border-bottom-left-radius: 15px 255px;
+      border-bottom-right-radius: 225px 15px;
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .sign_up:hover {
+      box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+      transform: translate3d(0, 2px, 0);
+    }
+
+    .sign_up:focus {
+      box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
     }
   }
 }
