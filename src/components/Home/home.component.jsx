@@ -1,6 +1,11 @@
 // import { useInView } from "react-intersection-observer";
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
+import uploadLogo from "../../assets/upload.png";
+import imageLogo from "../../assets/image.png";
+import audioLogo from "../../assets/audio.png";
+import textLogo from "../../assets/text.png";
+import errorLogo from "../../assets/error.png";
 import "./home.styles.scss";
 
 const Home = () => {
@@ -32,13 +37,41 @@ const Home = () => {
         <div className="analyzer">
           <div className="view">
             <div {...getRootProps()}>
-              <input {...getInputProps()} />
-              <p>Drag and drop files here or click to browse.</p>
+              <div>
+                {uploadedFiles.length === 0 ? (
+                  <img src={uploadLogo} alt="Upload logo" />
+                ) : (
+                  (() => {
+                    const extension = uploadedFiles[uploadedFiles.length-1].name.substring(
+                      uploadedFiles[uploadedFiles.length-1].name.lastIndexOf(".") + 1
+                    );
+                    if (
+                      extension === "pdf" ||
+                      extension === "txt" ||
+                      extension === "docx"
+                    ) {
+                      return <img src={textLogo} alt="Text File Logo" />;
+                    } else if (
+                      extension === "png" ||
+                      extension === "jpg" ||
+                      extension === "jpeg"
+                    ) {
+                      return <img src={imageLogo} alt="Img File Logo" />;
+                    } else if (extension === "mp3" || extension === "ogg") {
+                      return <img src={audioLogo} alt="Audio File Logo" />;
+                    } else {
+                      return <img src={errorLogo} alt="Error Logo" />;
+                    }
+                  })()
+                )}
+              </div>
               <ul>
                 {uploadedFiles.map((file) => (
                   <li key={file.name}>{file.name}</li>
                 ))}
               </ul>
+              <input id="file_upload" {...getInputProps()} />
+              <p>Drag and drop files here or click to browse.</p>
             </div>
           </div>
           <div className="result-container">
