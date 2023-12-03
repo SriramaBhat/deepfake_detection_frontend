@@ -56,11 +56,11 @@ const Home = () => {
                       extension === "jpg" ||
                       extension === "jpeg"
                     ) {
-                      return <img src={imageLogo} alt="Img File Logo" />;
+                      return <img src={imageLogo} id="imglogo" alt="Img File Logo" />;
                     } else if (extension === "mp3" || extension === "ogg") {
                       return <img src={audioLogo} alt="Audio File Logo" />;
                     } else {
-                      return <img src={errorLogo} alt="Error Logo" />;
+                      return <img src={errorLogo} id="error" alt="Error Logo" />;
                     }
                   })()
                 )}
