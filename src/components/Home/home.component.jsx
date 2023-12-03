@@ -1,4 +1,5 @@
 import { useInView } from "react-intersection-observer";
+import FileUpload from "../file-upload/file-upload";
 import "./home.styles.scss";
 
 const Home = () => {
@@ -21,7 +22,9 @@ const Home = () => {
           </div>
         </div>
         <div className="analyzer">
-          <div className="view"></div>
+          <div className="view">
+            <FileUpload />
+          </div>
           <div className="result-container">
             <div className="result">
               <p>Accuracy Score:</p>
