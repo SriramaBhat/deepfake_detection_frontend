@@ -9,10 +9,10 @@ import errorLogo from "../../assets/error.png";
 import "./home.styles.scss";
 
 const Home = () => {
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [uploadedFile, setUploadedFile] = useState(null);
   const { getRootProps, getInputProps } = useDropzone({
-    onDrop: (acceptedFiles) => {
-      setUploadedFiles(acceptedFiles);
+    onDrop: (acceptedFile) => {
+      setUploadedFile(acceptedFile);
       // Call your backend API endpoint to upload files
     },
   });
@@ -38,12 +38,13 @@ const Home = () => {
           <div className="view">
             <div {...getRootProps()}>
               <div>
-                {uploadedFiles.length === 0 ? (
+                {!uploadedFile ? (
                   <img src={uploadLogo} alt="Upload logo" />
                 ) : (
                   (() => {
-                    const extension = uploadedFiles[uploadedFiles.length-1].name.substring(
-                      uploadedFiles[uploadedFiles.length-1].name.lastIndexOf(".") + 1
+                    console.log(uploadedFile[0].name);
+                    const extension = uploadedFile[0].name.substring(
+                      uploadedFile[0].name.lastIndexOf(".") + 1
                     );
                     if (
                       extension === "pdf" ||
@@ -56,19 +57,25 @@ const Home = () => {
                       extension === "jpg" ||
                       extension === "jpeg"
                     ) {
-                      return <img src={imageLogo} id="imglogo" alt="Img File Logo" />;
+                      return (
+                        <img src={imageLogo} id="imglogo" alt="Img File Logo" />
+                      );
                     } else if (extension === "mp3" || extension === "ogg") {
                       return <img src={audioLogo} alt="Audio File Logo" />;
                     } else {
-                      return <img src={errorLogo} id="error" alt="Error Logo" />;
+                      return (
+                        <img src={errorLogo} id="error" alt="Error Logo" />
+                      );
                     }
                   })()
                 )}
               </div>
               <ul>
-                {uploadedFiles.map((file) => (
-                  <li key={file.name}>{file.name}</li>
-                ))}
+                {!uploadedFile ? (
+                  <li></li>
+                ) : (
+                  <li key={uploadedFile[0].name}>{uploadedFile[0].name}</li>
+                )}
               </ul>
               <input id="file_upload" {...getInputProps()} />
               <p>Drag and drop files here or click to browse.</p>
