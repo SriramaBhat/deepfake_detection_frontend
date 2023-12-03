@@ -91,8 +91,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="about-us"></section>
-      <section className="methadology"></section>
+      <section className="about-us" id="about-us"></section>
+      <section className="methadology" id="methadology"></section>
     </div>
   );
 };

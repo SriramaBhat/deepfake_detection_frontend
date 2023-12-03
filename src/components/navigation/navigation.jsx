@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import { UserContext } from "../../context/user.context";
 import { signOutUser } from "../../utils/firebase.utils";
@@ -19,8 +20,8 @@ const Navigation = () => {
         <div className="nav-links-container">
           {currentUser ? (
             <div>
-              <Link className="nav-link log_in">About us</Link>
-              <Link className="nav-link log_in">Our Methadology</Link>
+              <HashLink className="nav-link log_in" to="/#about-us">About us</HashLink>
+              <HashLink className="nav-link log_in" to="/#methadology">Our Methadology</HashLink>
               <Link className="nav-link" to="/dna-to-aa">
                 DNA to Amino Acid
               </Link>
@@ -34,8 +35,8 @@ const Navigation = () => {
           ) : (
             <div>
               {" "}
-              <Link className="nav-link log_in">About us</Link>
-              <Link className="nav-link log_in">Our Methadology</Link>
+              <HashLink className="nav-link log_in" to="/#about-us">About us</HashLink>
+              <HashLink className="nav-link log_in" to="/#methadology">Our Methadology</HashLink>
               <Link className="nav-link log_in" to="/login">
                 Log In
               </Link>
