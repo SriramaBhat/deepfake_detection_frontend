@@ -2,7 +2,10 @@ import { useInView } from "react-intersection-observer";
 import "./home.styles.scss";
 
 const Home = () => {
-  const [about_us, inView] = useInView({ rootMargin: "0px 0px" });
+  const [ref, inView] = useInView({
+    threshold: 0,
+  });
+  console.log(inView);
   return (
     <div class="home">
       <section className="analyzer-container">
@@ -23,11 +26,13 @@ const Home = () => {
             <div className="result">
               <p>Accuracy Score:</p>
             </div>
-            <button className="standard_button">Upload</button>
+            <button type="file" className="standard_button">
+              Upload
+            </button>
           </div>
         </div>
       </section>
-      <section ref={about_us} className="about-us"></section>
+      <section ref={ref} className="about-us"></section>
       <section className="methadology"></section>
     </div>
   );
