@@ -4,7 +4,6 @@ import { useDropzone } from "react-dropzone";
 import "./home.styles.scss";
 
 const Home = () => {
-
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: (acceptedFiles) => {
@@ -23,7 +22,10 @@ const Home = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo fuga
               vel quae necessitatibus eius illum nostrum deleniti odit veniam
               harum modi, velit consequatur iusto. Eveniet ab expedita velit
-              error optio!
+              error optio! Lorem ipsum dolor, sit amet consectetur adipisicing
+              elit. Deleniti dicta dolorem repellat, possimus nesciunt sunt
+              autem harum quam culpa tenetur. Consequatur facere, minus aut
+              natus odio obcaecati quidem laboriosam sequi.
             </p>
           </div>
         </div>
