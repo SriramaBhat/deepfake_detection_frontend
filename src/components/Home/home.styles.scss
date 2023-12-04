@@ -1,21 +1,24 @@
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
+// @keyframes fadeIn {
+//   0% { opacity: 0; }
+//   100% { opacity: 1; }
+// }
 .home {
   height: 300vh;
-  
+
   .analyzer-container {
-    background-image: linear-gradient(to bottom left, rgba(47,20,106,255), rgba(47,193,201,255));
+    background-image: linear-gradient(
+      to bottom left,
+      rgba(47, 20, 106, 255),
+      rgba(47, 193, 201, 255)
+    );
     display: flex;
     justify-content: space-around;
     height: 125vh;
 
     .about-container {
       max-width: 150rem;
-      animation: fadeIn 4s;
-      margin: 10rem 6rem 10rem 2rem;
+      // animation: fadeIn 4s;
+      margin: 8rem 6rem 10rem 2rem;
       color: aliceblue;
 
       h2 {
@@ -46,7 +49,8 @@
           list-style: none;
         }
 
-        li, p {
+        li,
+        p {
           font-size: 1.1rem;
         }
 
@@ -54,7 +58,8 @@
           margin-top: 2rem;
         }
 
-        #imglogo, #error {
+        #imglogo,
+        #error {
           height: 4.5rem;
           width: 4.5rem;
         }
@@ -88,42 +93,42 @@
           cursor: pointer;
           display: inline-flex;
           fill: #000;
-          font-family: Inter,sans-serif;
+          font-family: Inter, sans-serif;
           font-size: 16px;
           font-weight: 600;
           height: 48px;
           justify-content: center;
-          letter-spacing: -.8px;
+          letter-spacing: -0.8px;
           line-height: 24px;
           min-width: 5rem;
           outline: 0;
           padding: 0 5px;
           text-align: center;
           text-decoration: none;
-          transition: all .3s;
+          transition: all 0.3s;
           user-select: none;
           -webkit-user-select: none;
           touch-action: manipulation;
           border-radius: 4px;
         }
-        
+
         .standard_button:focus {
           color: #171e29;
         }
-        
+
         .standard_button:hover {
           border-color: darkgreen;
           color: darkgreen;
           background-color: rgb(207, 243, 254);
           fill: darkgreen;
         }
-        
+
         .standard_button:active {
           border-color: #06f;
           color: #06f;
           fill: #06f;
         }
-        
+
         @media (min-width: 768px) {
           .standard_button {
             min-width: 170px;
@@ -131,5 +136,31 @@
         }
       }
     }
+  }
+
+  .about-container,
+  .about-us,
+  .methadology {
+    opacity: 0;
+    transform: translateY(20vh);
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+    will-change: opacity, visibility;
+  }
+
+  .about-container.is-visible,
+  .about-us.is-visible,
+  .methadology.is-visible {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+
+  .about-us {
+    height: 70vh;
+  }
+
+  .methadology {
+    height: 100vh;
   }
 }
