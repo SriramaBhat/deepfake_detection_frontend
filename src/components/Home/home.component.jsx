@@ -18,7 +18,6 @@ const Home = () => {
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: (acceptedFile) => {
       setUploadedFile(acceptedFile);
-      // Call your backend API endpoint to upload files
     },
   });
 
@@ -111,8 +110,19 @@ const Home = () => {
           </div>
           <div className="result-container">
             <div className="result">
-              <p>Accuracy Score:</p>
-              <p>{probabilityOfDeepfake}</p>
+              <p>Deepfake Probability:</p>
+              <p
+                id="probability"
+                style={
+                  Number(probabilityOfDeepfake) < 50
+                    ? { color: "limegreen" }
+                    : Number(probabilityOfDeepfake) < 85
+                    ? { color: "goldenrod" }
+                    : { color: "red" }
+                }
+              >
+                {probabilityOfDeepfake}
+              </p>
             </div>
             <button onClick={uploadFileToBackend} className="standard_button">
               Upload
