@@ -22,12 +22,6 @@ const Navigation = () => {
             <div>
               <HashLink className="nav-link log_in" to="/#about-us">About us</HashLink>
               <HashLink className="nav-link log_in" to="/#methadology">Our Methadology</HashLink>
-              <Link className="nav-link" to="/dna-to-aa">
-                DNA to Amino Acid
-              </Link>
-              <Link className="nav-link" to="/aa-struct-pred">
-                Protein Structure Predictor
-              </Link>
               <span className="nav-link" onClick={signOutUser}>
                 {""}Sign Out{""}
               </span>
