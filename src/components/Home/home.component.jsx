@@ -1,6 +1,8 @@
 // import { useInView } from "react-intersection-observer";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useDropzone } from "react-dropzone";
+
+import { UserContext } from "../../context/user.context";
 import uploadLogo from "../../assets/upload.png";
 import imageLogo from "../../assets/image.png";
 import audioLogo from "../../assets/audio.png";
@@ -9,13 +11,40 @@ import errorLogo from "../../assets/error.png";
 import "./home.styles.scss";
 
 const Home = () => {
+  const { currentUser } = useContext(UserContext);
+
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [probabilityOfDeepfake, setProbabilityOfDeepfake] = useState("");
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: (acceptedFile) => {
       setUploadedFile(acceptedFile);
       // Call your backend API endpoint to upload files
     },
   });
+
+  const uploadFileToBackend = async () => {
+    if (!currentUser) {
+      alert("Not Authorized");
+    } else {
+      try {
+        const fileName = uploadedFile[0].name;
+        var data = new FormData();
+        data.append("file", uploadedFile[0]);
+        data.append("name", fileName);
+
+        const url = "http://localhost:5000/predict";
+        const response = await fetch(url, {
+          method: "POST",
+          body: data,
+        });
+        const response_data = await response.json();
+        setProbabilityOfDeepfake(response_data["probability"]);
+      } catch (error) {
+        console.log(error);
+        alert("Error");
+      }
+    }
+  };
 
   return (
     <div className="home">
@@ -42,7 +71,6 @@ const Home = () => {
                   <img src={uploadLogo} alt="Upload logo" />
                 ) : (
                   (() => {
-                    console.log(uploadedFile[0].name);
                     const extension = uploadedFile[0].name.substring(
                       uploadedFile[0].name.lastIndexOf(".") + 1
                     );
@@ -84,8 +112,9 @@ const Home = () => {
           <div className="result-container">
             <div className="result">
               <p>Accuracy Score:</p>
+              <p>{probabilityOfDeepfake}</p>
             </div>
-            <button type="file" className="standard_button">
+            <button onClick={uploadFileToBackend} className="standard_button">
               Upload
             </button>
           </div>
