@@ -1,8 +1,8 @@
-// import { useInView } from "react-intersection-observer";
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useDropzone } from "react-dropzone";
 
 import { UserContext } from "../../context/user.context";
+import FadeInSection from "../fade-in-section/fade-in";
 import uploadLogo from "../../assets/upload.png";
 import imageLogo from "../../assets/image.png";
 import audioLogo from "../../assets/audio.png";
@@ -15,40 +15,6 @@ const Home = () => {
 
   const [uploadedFile, setUploadedFile] = useState(null);
   const [probabilityOfDeepfake, setProbabilityOfDeepfake] = useState("");
-  const [isVisible1, setIsVisible1] = useState(true);
-  const [isVisible2, setIsVisible2] = useState(false);
-  const [isVisible3, setIsVisible3] = useState(false);
-  const domRef1 = useRef();
-  const domRef2 = useRef();
-  const domRef3 = useRef();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => setIsVisible1(entry.isIntersecting));
-    });
-    // const current = domRef.current;
-    observer.observe(domRef1.current);
-    return () => observer.unobserve(domRef1.current);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => setIsVisible2(entry.isIntersecting));
-    });
-    // const current = domRef.current;
-    observer.observe(domRef2.current);
-    return () => observer.unobserve(domRef2.current);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => setIsVisible3(entry.isIntersecting));
-    });
-    // const current = domRef.current;
-    observer.observe(domRef3.current);
-    return () => observer.unobserve(domRef3.current);
-  }, []);
-
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: (acceptedFile) => {
       setUploadedFile(acceptedFile);
@@ -83,21 +49,20 @@ const Home = () => {
     <div className="home">
       <section className="analyzer-container">
         <div className="about-project">
-          <div
-            className={`about-container ${isVisible1 ? "is-visible" : ""}`}
-            ref={domRef1}
-          >
-            <h2>Deepfake Content Detection</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo fuga
-              vel quae necessitatibus eius illum nostrum deleniti odit veniam
-              harum modi, velit consequatur iusto. Eveniet ab expedita velit
-              error optio! Lorem ipsum dolor, sit amet consectetur adipisicing
-              elit. Deleniti dicta dolorem repellat, possimus nesciunt sunt
-              autem harum quam culpa tenetur. Consequatur facere, minus aut
-              natus odio obcaecati quidem laboriosam sequi.
-            </p>
-          </div>
+          <FadeInSection>
+            <div className="about-container">
+              <h2>Deepfake Content Detection</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+                fuga vel quae necessitatibus eius illum nostrum deleniti odit
+                veniam harum modi, velit consequatur iusto. Eveniet ab expedita
+                velit error optio! Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Deleniti dicta dolorem repellat, possimus
+                nesciunt sunt autem harum quam culpa tenetur. Consequatur
+                facere, minus aut natus odio obcaecati quidem laboriosam sequi.
+              </p>
+            </div>
+          </FadeInSection>
         </div>
         <div className="analyzer">
           <div className="view">
@@ -167,38 +132,34 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section
-        className={`about-us ${isVisible2 ? "is-visible" : ""}`}
-        id="about-us"
-        ref={domRef2}
-      >
-        <h2>About Us</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-          architecto, sed in magni incidunt asperiores provident perferendis.
-          Delectus sint repellat optio tenetur illo amet et sit placeat quidem
-          quaerat. Dolore! Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Doloremque deserunt, corporis laudantium consectetur nisi aut
-          expedita eaque illum dolores maxime quam. Pariatur repellendus a neque
-          tenetur deleniti vel deserunt? Saepe.
-        </p>
-      </section>
-      <section
-        className={`methadology ${isVisible3 ? "is-visible" : ""}`}
-        id="methadology"
-        ref={domRef3}
-      >
-        <h2>Our Methadology</h2>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae,
-          possimus maxime. Neque sapiente eius numquam aliquid non dicta quo
-          adipisci vitae voluptates in libero expedita praesentium, dolor quod
-          corrupti fugiat! Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Vitae nisi sapiente nihil, praesentium quo, excepturi tenetur
-          ipsum, facere accusamus ullam dicta debitis velit exercitationem!
-          Asperiores nesciunt quasi id sapiente voluptates?
-        </p>
-      </section>
+      <FadeInSection>
+        <section className="about-us" id="about-us">
+          <h2>About Us</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
+            architecto, sed in magni incidunt asperiores provident perferendis.
+            Delectus sint repellat optio tenetur illo amet et sit placeat quidem
+            quaerat. Dolore! Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Doloremque deserunt, corporis laudantium consectetur nisi aut
+            expedita eaque illum dolores maxime quam. Pariatur repellendus a
+            neque tenetur deleniti vel deserunt? Saepe.
+          </p>
+        </section>
+      </FadeInSection>
+      <FadeInSection>
+        <section className="methadology" id="methadology">
+          <h2>Our Methadology</h2>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae,
+            possimus maxime. Neque sapiente eius numquam aliquid non dicta quo
+            adipisci vitae voluptates in libero expedita praesentium, dolor quod
+            corrupti fugiat! Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Vitae nisi sapiente nihil, praesentium quo, excepturi tenetur
+            ipsum, facere accusamus ullam dicta debitis velit exercitationem!
+            Asperiores nesciunt quasi id sapiente voluptates?
+          </p>
+        </section>
+      </FadeInSection>
     </div>
   );
 };
