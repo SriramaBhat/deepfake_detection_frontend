@@ -21,7 +21,7 @@ const Navigation = () => {
           {currentUser ? (
             <div>
               <HashLink className="nav-link log_in" to="/#about-us">About us</HashLink>
-              <HashLink className="nav-link log_in" to="/#methadology">Our Methadology</HashLink>
+              <HashLink className="nav-link log_in" to="/#methadology">Our Methodology</HashLink>
               <span className="nav-link sign_up" onClick={signOutUser}>
                 {""}Sign Out{""}
               </span>
@@ -30,7 +30,7 @@ const Navigation = () => {
             <div>
               {" "}
               <HashLink className="nav-link log_in" to="/#about-us">About us</HashLink>
-              <HashLink className="nav-link log_in" to="/#methadology">Our Methadology</HashLink>
+              <HashLink className="nav-link log_in" to="/#methadology">Our Methodology</HashLink>
               <Link className="nav-link log_in" to="/login">
                 Log In
               </Link>

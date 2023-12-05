@@ -65,56 +65,54 @@ const SignUp = () => {
 
   return (
     <div>
-    <div className="signup-container">
-      <span id="title">
-      <h1>Sign Up Form</h1>
-      </span>
-      <form className="signup-form" action="" onSubmit={handleSubmit}>
-        <FormInput
-          label="Username"
-          type="text"
-          required
-          onChange={handleChange}
-          name="displayName"
-          value={displayName}
-        />
+      <div className="signup-container">
+        <form className="signup-form" action="" onSubmit={handleSubmit}>
+          <h1>Sign Up Form</h1>
+          <FormInput
+            label="Username"
+            type="text"
+            required
+            onChange={handleChange}
+            name="displayName"
+            value={displayName}
+          />
 
-        <FormInput
-          label="Email"
-          type="email"
-          required
-          onChange={handleChange}
-          name="email"
-          value={email}
-        />
+          <FormInput
+            label="Email"
+            type="email"
+            required
+            onChange={handleChange}
+            name="email"
+            value={email}
+          />
 
-        <FormInput
-          label="Password"
-          type="password"
-          required
-          onChange={handleChange}
-          name="password"
-          value={password}
-        />
+          <FormInput
+            label="Password"
+            type="password"
+            required
+            onChange={handleChange}
+            name="password"
+            value={password}
+          />
 
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          id="uconpass"
-          required
-          onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
-        />
+          <FormInput
+            label="Confirm Password"
+            type="password"
+            id="uconpass"
+            required
+            onChange={handleChange}
+            name="confirmPassword"
+            value={confirmPassword}
+          />
 
-        <button type="submit" className="form-btn">
-          Sign Up
-        </button>
-        <button type="button" onClick={logGoogleUser} className="form-btn">
+          <button type="submit" className="form-btn">
+            Sign Up
+          </button>
+          <button type="button" onClick={logGoogleUser} className="">
             Login with Google
-        </button>
-      </form>
-    </div>
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

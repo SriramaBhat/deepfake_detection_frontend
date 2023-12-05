@@ -1,4 +1,4 @@
-.signup-container {
+.login-container {
   margin: auto auto;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@
     text-align: center;
   }
 
-  .signup-form {
+  .login-form {
     width: 25rem;
     padding: 2rem;
     border: 1px solid #ccc;
@@ -18,7 +18,7 @@
     background-color: #f9f9f9;
   }
 
-  button {
+  button[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -27,19 +27,14 @@
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 0.5rem;
   }
 
-  button:hover {
+  button[type="submit"]:hover {
     background-color: #0056b3;
-  }
-
-  .form-btn {
-    background-color: black;
   }
 }
 
-.signup-container::before {
+.login-container::before {
   content: "";
   position: absolute;
   top: 0;
@@ -53,7 +48,7 @@
 }
 
 
-.signup-form {
+.login-form {
   width: 300px;
   padding: 20px;
   border: 1px solid #ccc;

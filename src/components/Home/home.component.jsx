@@ -183,7 +183,7 @@ const Home = () => {
       </FadeInSection>
       <FadeInSection>
         <section className="methadology" id="methadology">
-          <h2>Our Methadology</h2>
+          <h2>Our Methodology</h2>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae,
             possimus maxime. Neque sapiente eius numquam aliquid non dicta quo

@@ -1,11 +1,9 @@
 import { useState } from "react";
 
-import {
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase.utils";
+import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase.utils";
 
 import FormInput from "../form-input/form-input";
-import "./login.styles.css"
+import "./login.styles.scss";
 
 const defaultFormFields = {
   email: "",
@@ -46,14 +44,10 @@ const Login = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-
   return (
-    <div>
-      <span id="title">
-    <h1>Login Form</h1>
-    </span>
     <div className="login-container">
       <form className="login-form" action="" onSubmit={handleSubmit}>
+        <h1>Log In</h1>
         <FormInput
           label="Email"
           type="email"
@@ -73,10 +67,11 @@ const Login = () => {
         />
 
         <div className="buttons-container">
-          <button type="submit" className="form-btn">Login</button>
+          <button type="submit" className="form-btn">
+            Login
+          </button>
         </div>
       </form>
-    </div>
     </div>
   );
 };
