@@ -22,6 +22,57 @@
       margin: 8rem 6rem 10rem 2rem;
       color: aliceblue;
 
+      .wrapper {
+        display: inline-flex;
+        margin-left: 0rem;
+      }
+      
+      
+      .wrapper .dynamic-txt {
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-left: 15px;
+        line-height: 35px;
+        height: 35px;
+        overflow: hidden;
+      }
+      
+      .dynamic-txt li {
+        list-style: none;
+        position: relative;
+        animation: slide 12s steps(4) infinite;
+        border-bottom: 30px;
+        top: 0;
+      }
+      
+      @keyframes slide {
+        100% {
+          top: -145px;
+        }
+      }
+      
+      .dynamic-txt li span {
+        position: relative;
+      }
+      
+      .dynamic-txt li span::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        background: rgb(47, 100, 150);
+        border-left: 2px solid aliceblue;
+        animation: typing 3s steps(21) infinite;
+      }
+      
+      @keyframes typing {
+        100% {
+          left: 100%;
+          margin: 0 -35px 0 35px;
+        }
+      }
+
       h2 {
         font-size: 2.5rem;
         font-weight: 500;
