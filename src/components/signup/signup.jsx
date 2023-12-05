@@ -64,8 +64,11 @@ const SignUp = () => {
   };
 
   return (
+    <div>
     <div className="signup-container">
+      <span id="title">
       <h1>Sign Up Form</h1>
+      </span>
       <form className="signup-form" action="" onSubmit={handleSubmit}>
         <FormInput
           label="Username"
@@ -111,6 +114,7 @@ const SignUp = () => {
             Login with Google
         </button>
       </form>
+    </div>
     </div>
   );
 };
