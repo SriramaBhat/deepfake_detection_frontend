@@ -89,7 +89,11 @@ const Home = () => {
                       return (
                         <img src={imageLogo} id="imglogo" alt="Img File Logo" />
                       );
-                    } else if (extension === "mp3" || extension === "ogg") {
+                    } else if (
+                      extension === "mp3" ||
+                      extension === "ogg" ||
+                      extension === "wav"
+                    ) {
                       return <img src={audioLogo} alt="Audio File Logo" />;
                     } else {
                       return (
@@ -119,8 +123,8 @@ const Home = () => {
                   Number(probabilityOfDeepfake) < 50
                     ? { color: "limegreen" }
                     : Number(probabilityOfDeepfake) < 85
-                    ? { color: "goldenrod" }
-                    : { color: "red" }
+                    ? { color: "#FFCC00" }
+                    : { color: "#CC1100" }
                 }
               >
                 {probabilityOfDeepfake}

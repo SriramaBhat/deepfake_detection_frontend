@@ -22,7 +22,7 @@ const Navigation = () => {
             <div>
               <HashLink className="nav-link log_in" to="/#about-us">About us</HashLink>
               <HashLink className="nav-link log_in" to="/#methadology">Our Methadology</HashLink>
-              <span className="nav-link" onClick={signOutUser}>
+              <span className="nav-link sign_up" onClick={signOutUser}>
                 {""}Sign Out{""}
               </span>
             </div>
