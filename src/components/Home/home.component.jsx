@@ -8,6 +8,9 @@ import imageLogo from "../../assets/image.png";
 import audioLogo from "../../assets/audio.png";
 import textLogo from "../../assets/text.png";
 import errorLogo from "../../assets/error.png";
+// import highProb from "../../assets/highProb.png";
+// import midProb from "../../assets/midProb.png";
+// import lowProb from "../../assets/highProb.png";
 import "./home.styles.scss";
 
 const Home = () => {
