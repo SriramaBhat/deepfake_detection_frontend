@@ -6,6 +6,9 @@
 .home {
   height: 300vh;
 
+  .just{
+    text-align: center;
+  }
   .analyzer-container {
     background-image: linear-gradient(
       to bottom left,
@@ -200,11 +203,14 @@
       gap: 2rem;
     }
     .text{
+      text-align: justify;
       margin: 0px 100px 0px 100px;
     }
 
     .text1 {
-      margin: 25px 100px 50px 125px;
+      text-align: justify;
+      padding-top: 25px;
+      margin: 25px 100px 50px 100px;
     }
   }
   .about-us h3{
@@ -220,11 +226,48 @@
       margin: 100px;
   }
 
-  .methadology {
-    height: 100vh;
-    margin: 200px;
+  // .methadology {
+  //   height: 100vh;
+  //   margin: 200px;
+  //   text-align: center;
+  // }
+  .methodology-section {
+    padding-top: 10px;
+    position: relative;
     text-align: center;
-  }
+    width: 100%;
+    background-color: #f0f0f0;
+    transition: background-color 0.5s ease-in-out;
+    p{
+      margin: 0px 100px 20px 100px;
+      text-align: justify;
+    }
+    .methodology-image {
+       width: 80vh;
+       height :auto;
+       border: 1px solid black;
+       margin-bottom: 20px;
+       transition: transform 0.3s ease-in-out;
+    }
+   
+    .footer {
+       position: absolute;
+       bottom: -170px;
+       width: 100%;
+       padding-bottom: 160px;
+       padding-top: 20px;
+       background-color: #000;
+       color: #fff;
+       transition: background-color 0.3s ease-in-out;
+      
+   
+      
+   
+       p {
+         margin: 0;
+       }
+    }
+   }
 }
 
 
