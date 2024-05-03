@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { useDropzone } from "react-dropzone";
 
 import { UserContext } from "../../context/user.context";
 import FadeInSection from "../fade-in-section/fade-in";
+import loading from "../../assets/loading.gif";
 import uploadLogo from "../../assets/upload.png";
 import imageLogo from "../../assets/image.png";
 import audioLogo from "../../assets/audio.png";
@@ -18,12 +19,15 @@ import architechture from "../../assets/methodology.png";
 // import midProb from "../../assets/midProb.png";
 // import lowProb from "../../assets/highProb.png";
 import "./home.styles.scss";
+import Modal from "../Modal/Modal";
 
 const Home = () => {
   const { currentUser } = useContext(UserContext);
-
+  const dialog = useRef();
   const [uploadedFile, setUploadedFile] = useState(null);
   const [probabilityOfDeepfake, setProbabilityOfDeepfake] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: (acceptedFile) => {
       setUploadedFile(acceptedFile);
@@ -32,45 +36,56 @@ const Home = () => {
 
   const uploadFileToBackend = async () => {
     if (!currentUser) {
-      alert("Not Authorized");
+      setError("Not Authorized");
+      dialog.current.showModal();
     } else {
       try {
-        const fileName = uploadedFile[0].name;
-        const allowedExtensions = [
-          "txt",
-          "pdf",
-          "docx",
-          "jpeg",
-          "jpg",
-          "png",
-          "wav",
-          "mp3",
-          "ogg",
-        ];
-        const extension = fileName.substring(fileName.lastIndexOf(".") + 1);
-        if (!allowedExtensions.includes(extension)) {
-          alert("Extension not included");
+        if (!uploadedFile) {
+          setError("No file uploaded");
+          dialog.current.showModal();
         } else {
-          var data = new FormData();
-          data.append("file", uploadedFile[0]);
-
-          const url = "http://localhost:5000/predict";
-          const response = await fetch(url, {
-            method: "POST",
-            body: data,
-          });
-          const response_data = await response.json();
-          setProbabilityOfDeepfake(response_data["prediction"]);
+          const fileName = uploadedFile[0].name;
+          const allowedExtensions = [
+            "txt",
+            "pdf",
+            "docx",
+            "jpeg",
+            "jpg",
+            "png",
+            "wav",
+            "mp3",
+            "ogg",
+          ];
+          const extension = fileName.substring(fileName.lastIndexOf(".") + 1);
+          if (!allowedExtensions.includes(extension)) {
+            setError("Extension not supported");
+            dialog.current.showModal();
+          } else {
+            var data = new FormData();
+            data.append("file", uploadedFile[0]);
+            setIsLoading(true);
+            const url = process.env.SERVER ? process.env.SERVER : "http://localhost:5000/predict";
+            const response = await fetch(url, {
+              method: "POST",
+              body: data,
+            });
+            const response_data = await response.json();
+            setIsLoading(false);
+            setProbabilityOfDeepfake(response_data["prediction"]);
+          }
         }
       } catch (error) {
         console.log(error);
-        alert("Error, please try later");
+        setIsLoading(false);
+        setError("Server Error, please try later");
+        dialog.current.showModal();
       }
     }
   };
 
   return (
     <div className="home">
+      <Modal ref={dialog} message={error} />
       <section className="analyzer-container">
         <div className="about-project">
           <FadeInSection>
@@ -154,6 +169,7 @@ const Home = () => {
           <div className="result-container">
             <div className="result">
               <p>Deepfake Probability:</p>
+              {isLoading && <img src={loading} alt="Loading Animaation"/>}
               {probabilityOfDeepfake && (
                 <p
                   id="probability"
