@@ -64,7 +64,9 @@ const Home = () => {
             var data = new FormData();
             data.append("file", uploadedFile[0]);
             setIsLoading(true);
-            const url = process.env.REACT_APP_SERVER ? process.env.REACT_APP_SERVER : "http://localhost:5000/predict";
+            const url = process.env.REACT_APP_SERVER
+              ? process.env.REACT_APP_SERVER
+              : "http://localhost:5000/predict";
             console.log(url);
             const response = await fetch(url, {
               method: "POST",
@@ -72,7 +74,14 @@ const Home = () => {
             });
             const response_data = await response.json();
             setIsLoading(false);
-            setProbabilityOfDeepfake(response_data["prediction"]);
+            const textExt = ["txt", "pdf", "docx"];
+            if (textExt.includes(extension)) {
+              setProbabilityOfDeepfake(response_data["prediction"]);
+            } else {
+              setProbabilityOfDeepfake(
+                100 - Number(response_data["prediction"])
+              );
+            }
           }
         }
       } catch (error) {
@@ -170,7 +179,7 @@ const Home = () => {
           <div className="result-container">
             <div className="result">
               <p>Deepfake Probability:</p>
-              {isLoading && <img src={loading} alt="Loading Animaation"/>}
+              {isLoading && <img src={loading} alt="Loading Animaation" />}
               {probabilityOfDeepfake && (
                 <p
                   id="probability"
