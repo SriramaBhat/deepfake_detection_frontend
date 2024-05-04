@@ -64,7 +64,7 @@ const Home = () => {
             var data = new FormData();
             data.append("file", uploadedFile[0]);
             setIsLoading(true);
-            const url = process.env.REACT_APP_SERVER ? process.env.SERVER : "http://localhost:5000/predict";
+            const url = process.env.REACT_APP_SERVER ? process.env.REACT_APP_SERVER : "http://localhost:5000/predict";
             console.log(url);
             const response = await fetch(url, {
               method: "POST",
