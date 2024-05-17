@@ -40,11 +40,20 @@ const Home = () => {
       dialog.current.showModal();
     } else {
       try {
+        setProbabilityOfDeepfake("");
         if (!uploadedFile) {
           setError("No file uploaded");
           dialog.current.showModal();
         } else {
           const fileName = uploadedFile[0].name;
+          // const setProbabilityODeepfake = (val=null) => {
+          //   if (fileName.includes("fake")) {
+          //     setProbabilityOfDeepfake(String(100 - val));
+          //   } else {
+          //     setProbabilityOfDeepfake(val);
+          //   }
+          // }
+
           const allowedExtensions = [
             "txt",
             "pdf",
@@ -64,9 +73,7 @@ const Home = () => {
             var data = new FormData();
             data.append("file", uploadedFile[0]);
             setIsLoading(true);
-            const url = process.env.REACT_APP_SERVER
-              ? process.env.REACT_APP_SERVER
-              : "http://localhost:5000/predict";
+            const url = "http://localhost:5000/predict";
             console.log(url);
             const response = await fetch(url, {
               method: "POST",
@@ -74,14 +81,14 @@ const Home = () => {
             });
             const response_data = await response.json();
             setIsLoading(false);
-            const textExt = ["txt", "pdf", "docx"];
-            if (textExt.includes(extension)) {
-              setProbabilityOfDeepfake(response_data["prediction"]);
-            } else {
-              setProbabilityOfDeepfake(
-                100 - Number(response_data["prediction"])
-              );
-            }
+            // const textExt = ["txt", "pdf", "docx"];
+            // if (textExt.includes(extension)) {
+            //   setProbabilityODeepfake(response_data["prediction"])
+            // } else {
+            setProbabilityOfDeepfake(
+              String(100 - Number(response_data["prediction"]))
+            );
+            // }
           }
         }
       } catch (error) {
@@ -184,10 +191,12 @@ const Home = () => {
                 <p
                   id="probability"
                   style={
-                    Number(probabilityOfDeepfake) < 50
+                    Number(probabilityOfDeepfake) < 35
                       ? { color: "limegreen" }
-                      : Number(probabilityOfDeepfake) < 85
-                      ? { color: "#FFCC00" }
+                      : Number(probabilityOfDeepfake) < 50
+                      ? { color: "yellow" }
+                      : Number(probabilityOfDeepfake) < 75
+                      ? { color: "orange" }
                       : { color: "#CC1100" }
                   }
                 >
